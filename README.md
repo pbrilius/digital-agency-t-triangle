@@ -8,6 +8,12 @@ Act accordingly & setup `composer.php` project by its own `Laravel` *metrics &
 measurements* - providing the folder w\ the correct database credentials, its
 own scheming facilities & correct `log` folder premissions etc.
 
+## **RDBMS** Migrations
+
+```shell
+php artisan migrate:fresh
+```
+
 ## **CLI** runaway - runtime command
 
 ## Web solution **URL**
