@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Geolocation;
 
 class CollectJSONFIelds extends Command
 {
@@ -28,6 +29,27 @@ class CollectJSONFIelds extends Command
      */
     public function handle()
     {
+        Geolocation::truncate();
+
+        $rawData = file_get_contents(
+            __DIR__ . '/..'
+            . '/..'
+            . '/../data-expansion/' . env('DATA_EXPANSION')
+        );
+
+        $jsonDecodedData = json_decode($rawData);
+
+        foreach ($jsonDecodedData as $row) {
+            $geolocation = new Geolocation();
+            $geolocation->label = $row->name;
+            $geolocation->geotag = [
+                (float) $row->latitude,
+                (float) $row->longitude
+            ];
+
+            $geolocation->save();
+        }
+
         return 0;
     }
 }

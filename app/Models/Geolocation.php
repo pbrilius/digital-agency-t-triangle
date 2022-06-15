@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Geolocation extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['label', 'geotag'];
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('label');
-            $table->point('geotag');
+            $table->jsonb('geotag');
         });
     }
 
