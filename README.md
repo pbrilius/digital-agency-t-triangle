@@ -22,4 +22,11 @@ php artisan migrate:fresh
 
 ## **CLI** runaway - runtime command
 
+Find `data-expansion` `jsonlint` linted **JSON** data source & import it to the
+database:
+
+```shell
+php artisan command:collect-json-fields
+```
+
 ## Web solution **URL**
