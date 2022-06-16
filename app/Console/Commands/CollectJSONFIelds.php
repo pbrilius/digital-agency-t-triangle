@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Geolocation;
+use Illuminate\Support\Facades\DB;
 
 class CollectJSONFIelds extends Command
 {
@@ -38,17 +39,23 @@ class CollectJSONFIelds extends Command
         );
 
         $jsonDecodedData = json_decode($rawData);
+        $bar = $this->output->createProgressBar(count($jsonDecodedData));
 
         foreach ($jsonDecodedData as $row) {
-            $geolocation = new Geolocation();
-            $geolocation->label = $row->name;
-            $geolocation->geotag = [
-                (float) $row->latitude,
-                (float) $row->longitude
-            ];
+            DB::insert(
+                'insert into geolocations (label, geotag) values (?, ?)',
+                [
+                    $row->name,
+                    \json_encode([
+                        'latitude' => (float) $row->latitude,
+                        'longitude' => (float) $row->longitude,
+                    ])
+                ]
+            );
 
-            $geolocation->save();
+            $bar->advance();
         }
+        $bar->finish();
 
         return 0;
     }
