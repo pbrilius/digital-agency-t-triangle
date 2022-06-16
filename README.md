@@ -14,7 +14,6 @@ own scheming facilities & correct `log` folder premissions etc.
 composer install
 cp -v .env.example .env
 php artisan key:generate
-php artisan test
 ```
 
 ## **RDBMS** Migrations
@@ -33,3 +32,9 @@ php artisan command:collect-json-fields
 ```
 
 ## Web solution **URL**
+
+## **TDD** on **QE** & **QA**
+
+```shell
+php artisan test
+```
