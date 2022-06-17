@@ -4,6 +4,7 @@ namespace App\Services;
 
 class GpsDevice
 {
+    const EARTH_RADIUS = 6371.009;
     /**
      * Filtered computation graphics data
      * @var array
