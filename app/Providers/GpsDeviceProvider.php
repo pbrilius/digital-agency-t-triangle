@@ -3,8 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\GpsDevice;
 
-class GpsDevice extends ServiceProvider
+class GpsDeviceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -13,7 +14,9 @@ class GpsDevice extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(GpsDevice::class, function ($app) {
+            return new GpsDevice(config('distance-filter'));
+        });
     }
 
     /**
@@ -25,4 +28,5 @@ class GpsDevice extends ServiceProvider
     {
         //
     }
+
 }

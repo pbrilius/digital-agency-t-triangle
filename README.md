@@ -14,6 +14,8 @@ own scheming facilities & correct `log` folder premissions etc.
 composer install
 cp -v .env.example .env
 chmod -Rv o+rw storage/
+mkdir -vp bootstrap/cache
+chmod -v o+rw bootstrap/cache
 php artisan key:generate
 ```
 
