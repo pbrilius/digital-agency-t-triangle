@@ -13,6 +13,7 @@ own scheming facilities & correct `log` folder premissions etc.
 ```shell
 composer install
 cp -v .env.example .env
+chmod -Rv o+rw storage/
 php artisan key:generate
 ```
 
@@ -32,6 +33,10 @@ php artisan command:collect-json-fields
 ```
 
 ## Web solution **URL**
+
+Navigate **GUI** browser to `/web-solution` and see the detailed view of
+the result filtered **PDO** persistent storage data array. Don't forget to
+prefix w\ `index.php`.
 
 ## **TDD** on **QE** & **QA**
 
