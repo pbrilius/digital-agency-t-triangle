@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use App\Providers\GpsDevice;
+use App\Services\GpsDevice;
 
 class GpsDeviceTest extends TestCase
 {
