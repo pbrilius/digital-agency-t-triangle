@@ -48,5 +48,5 @@ php artisan test
 
 ## NB
 
-Configure the *Wikipedia* behavioural formularism by the modification of the
+Configure the [Wikipedia](https://en.wikipedia.org/wiki/Great-circle_distance) behavioural formularism by the modification of the
 configuration values at the `config/app.php` section `distance-filter`.
