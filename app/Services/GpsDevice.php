@@ -41,7 +41,7 @@ class GpsDevice
             $row['latitude'] = $geotag->latitude;
             $row['longitude'] = $geotag->longitude;
 
-            $row['dublin-distance'] = round(static::EARTH_RADIUS * atan(
+            $row['dublin-distance'] = abs(round(static::EARTH_RADIUS * atan(
                 sqrt(
                     pow(
                         cos($row['latitude']) * sin(abs($row['longitude'] - $config['dublin-office']['longitude'])),
@@ -61,9 +61,9 @@ class GpsDevice
                     sin($row['latitude']) +
                     cos($config['dublin-office']['latitude']) *
                     cos($row['latitude']) *
-                    cos(abs($row['longitude']) - $config['dublin-office']['longitude'])
+                    cos(abs($row['longitude'] - $config['dublin-office']['longitude']))
                 )
-            ), 2);
+            ), 2));
         }
 
         return $pdoSelection;
