@@ -34,6 +34,7 @@ class GeolocationController extends Controller
 
         return view('web-solution', [
             'computedFilters' => $gpsDevice->getFilteredVariables(),
+            'maxDistance' => config('app.distance-filter')['filteredTarget']
         ]);
     }
 }

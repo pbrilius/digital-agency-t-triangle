@@ -10,7 +10,10 @@
         <div class="container container-fluid">
             <div class="container container-lg">
                 <h1>Web solution</h1>
-                <table class="table">
+                <p>
+                    <i>Ma.x</i> distance: <b>{{ $maxDistance }} </b> km.
+                </p>
+                <table class="table table-primary table-striped">
                     <thead>
                         <th>Label</th>
                         <th>geo-longitude</th>
