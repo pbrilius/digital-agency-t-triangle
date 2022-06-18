@@ -157,8 +157,8 @@ return [
     'distance-filter' => [
        'filteredTarget' => '100',
        'dublin-office' => [
-           53.3340285,
-           -6.2535495,
+           'latitude' => 53.3340285,
+           'longitude' => -6.2535495,
        ],
     ],
 

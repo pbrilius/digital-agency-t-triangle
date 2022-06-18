@@ -12,6 +12,22 @@ class GpsDevice
     private $filteredVariables = [];
 
     /**
+     * Configuration array
+     *
+     * @var array
+     */
+    private $configuration = [];
+
+    /**
+     * Constructor
+     * @param array $configuration  Configuration array
+     */
+    public function __construct(array $configuration)
+    {
+        $this->configuration = $configuration;
+    }
+
+    /**
      * Calculates the geolocation GPS based differences
      * @param  array $pdoSelection               tabular PDO data
      * @return array               Locations enriched data
