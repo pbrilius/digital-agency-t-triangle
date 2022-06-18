@@ -154,6 +154,14 @@ return [
     |
     */
 
+    'distance-filter' => [
+       'filteredTarget' => '1000',
+       'dublin-office' => [
+           'latitude' => 53.3340285,
+           'longitude' => -6.2535495,
+       ],
+    ],
+
     'providers' => [
 
         /*
@@ -195,6 +203,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Target market application providers
+         */
+         App\Providers\GpsDeviceProvider::class,
     ],
 
     /*
