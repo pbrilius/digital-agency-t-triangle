@@ -34,7 +34,39 @@ class GpsDevice
      */
     public function calculateDistances(array $pdoSelection): array
     {
-        return [];
+        $config = $this->configuration;
+
+        foreach ($pdoSelection as &$row) {
+            $geotag = json_decode($row['geotag']);
+            $row['latitude'] = $geotag->latitude;
+            $row['longitude'] = $geotag->longitude;
+
+            $row['dublin-distance'] = round(static::EARTH_RADIUS * atan(
+                sqrt(
+                    pow(
+                        cos($row['latitude']) * sin(abs($row['longitude'] - $config['dublin-office']['longitude'])),
+                        2
+                    ) +
+                    pow(
+                        cos($config['dublin-office']['latitude']) *
+                        sin($row['latitude']) -
+                        sin($config['dublin-office']['latitude']) *
+                        cos($row['latitude']) *
+                        cos(abs($row['longitude'] - $config['dublin-office']['longitude'])),
+                        2
+                    )
+                ) /
+                (
+                    sin($config['dublin-office']['latitude']) *
+                    sin($row['latitude']) +
+                    cos($config['dublin-office']['latitude']) *
+                    cos($row['latitude']) *
+                    cos(abs($row['longitude']) - $config['dublin-office']['longitude'])
+                )
+            ), 2);
+        }
+
+        return $pdoSelection;
     }
 
     /**
@@ -44,7 +76,13 @@ class GpsDevice
      */
     public function computeFilter(array $distanceCalculations): void
     {
-        $this->setFilteredVariables([]);
+        $config = $this->configuration;
+
+        $basicConcept = array_filter($distanceCalculations, function ($value) use ($config) {
+            return $value['dublin-distance'] <= $config['filteredTarget'] ?? false;
+        });
+
+        $this->setFilteredVariables($basicConcept);
     }
 
     /**
@@ -71,5 +109,3 @@ class GpsDevice
         return $this;
     }
 }
-
- ?>

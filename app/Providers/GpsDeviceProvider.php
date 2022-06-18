@@ -15,7 +15,7 @@ class GpsDeviceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(GpsDevice::class, function ($app) {
-            return new GpsDevice(config('distance-filter'));
+            return new GpsDevice(config('app.distance-filter'));
         });
     }
 

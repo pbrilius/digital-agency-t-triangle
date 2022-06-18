@@ -45,3 +45,8 @@ prefix w\ `index.php`.
 ```shell
 php artisan test
 ```
+
+## NB
+
+Configure the *Wikipedia* behavioural formularism by the modification of the
+configuration values at the `config/app.php` section `distance-filter`.

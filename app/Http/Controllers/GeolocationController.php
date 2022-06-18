@@ -14,7 +14,7 @@ class GeolocationController extends Controller
      */
     public $gpsDevice;
 
-    /**
+/**
      * Default constructor w\ service provider
      * @param GpsDevice $gpsDevice  geolocation calculator &* computer
      */
@@ -29,6 +29,7 @@ class GeolocationController extends Controller
 
         $geolocations = Geolocation::all()->toArray();
         $calculatedDistances = $gpsDevice->calculateDistances($geolocations);
+
         $gpsDevice->computeFilter($calculatedDistances);
 
         return view('web-solution', [

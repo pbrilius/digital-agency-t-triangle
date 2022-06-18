@@ -10,10 +10,24 @@
         <div class="container container-fluid">
             <div class="container container-lg">
                 <h1>Web solution</h1>
-                <p>Hello world!</p>
-            </div>
-            <div class="container container-lg">
-                <p>Hello supra-world!</p>
+                <table class="table">
+                    <thead>
+                        <th>Label</th>
+                        <th>geo-longitude</th>
+                        <th>geo-latitude</th>
+                        <th>dublin-distance</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($computedFilters as $key => $row)
+                            <tr>
+                                <td>{{ $row['label'] }}</td>
+                                <td>{{ $row['longitude'] }}</td>
+                                <td>{{ $row['latitude'] }}</td>
+                                <td>{{ $row['dublin-distance'] }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
